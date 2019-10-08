@@ -19,28 +19,3 @@ Github repo: https://github.com/renecruzATX/burger-builder-final
 Client start in client folder: ```npm start``` 
 
 Server start in server folder: ```node index.js```
-
-
-## Application Screenshots
-
-Homepage
-
-<img src="/screenshots/burgerBuilderStartPage.png" alt="alt text" width="75%" height="75%">
-
-
-Burger with Ingredients
-
-<img src="/screenshots/burgerBuilderStartIngredients.png" width="75%" height="75%">
-
-Order Summary
-
-<img src="/screenshots/burgerBuilderOrderSummary.png" alt="alt text" width="75%" height="75%">
-
-Order Details
-
-<img src="/screenshots/burgerBuilderOrderDetails.png" alt="alt text" width="75%" height="75%">
-
-
-Orders Page
-
-<img src="/screenshots/burgerBuilderOrdersPage.png" alt="alt text" width="75%" height="75%">
