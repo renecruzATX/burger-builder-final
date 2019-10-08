@@ -30,7 +30,7 @@ Homepage
 
 Burger with Ingredients
 
-<img src="/screenshots/burgerBuilderStartIngredients.png" alt="alt text" width="75%" height="75%">
+<img src="/screenshots/burgerBuilderStartIngredients.png" width="75%" height="75%">
 
 Order Summary
 
