@@ -19,3 +19,24 @@ Github repo: https://github.com/renecruzATX/burger-builder-final
 Client start in client folder: ```npm start``` 
 
 Server start in server folder: ```node index.js```
+
+
+## Application Screenshots
+
+Homepage
+
+<img src="/public/burgerBuilderStartPage.png" alt="alt text" width="75%" height="75%">
+
+Assassins
+
+<img src="/public/burgerBuilderOrdersPage.png" alt="alt text" width="75%" height="75%">
+
+<img src="/public/kb3.png" alt="alt text" width="75%" height="75%">
+
+<img src="/public/kb4.png" alt="alt text" width="75%" height="75%">
+
+Contracts
+
+<img src="/public/kb5.png" alt="alt text" width="75%" height="75%">
+
+<img src="/public/kb6.png" alt="alt text" width="75%" height="75%">
