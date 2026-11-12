@@ -32,7 +32,7 @@ This project assumes that you have a working knowledge of HTML, CSS, and Javascr
 
 ## Project Links
 
-Deployed site: _add your Render URL here_
+Deployed site: https://burger-builder-gmzs.onrender.com/
 
 Github repo: https://github.com/renecruzATX/burger-builder-final
 
