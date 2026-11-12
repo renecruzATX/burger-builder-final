@@ -1,20 +1,19 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
+  "name": "burger-builder-server",
+  "version": "2.0.0",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.3",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.4",
-    "jwt-simple": "^0.5.5",
-    "mongoose": "^5.4.2"
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jwt-simple": "^0.5.6",
+    "mongoose": "^8.8.1"
   }
 }

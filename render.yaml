@@ -1,0 +1,16 @@
+# One-click deploy on Render (free tier): New > Blueprint > pick this repo
+services:
+  - type: web
+    name: burger-builder
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/ingredients
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: mongodburi
+        sync: false   # paste your MongoDB Atlas connection string in the Render dashboard
+      - key: SECRET
+        generateValue: true

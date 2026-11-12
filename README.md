@@ -1,5 +1,3 @@
-﻿https://burger-builder-final.herokuapp.com/
-
 # Burger Builder
 
 ## Project Background
@@ -34,28 +32,55 @@ This project assumes that you have a working knowledge of HTML, CSS, and Javascr
 
 ## Project Links
 
-Deployed site: [Burger Builder](http://burger-builder-final.herokuapp.com/)
+Deployed site: _add your Render URL here_
 
 Github repo: https://github.com/renecruzATX/burger-builder-final
 
-React JS docs: https://reactjs.org/docs/getting-started.html
+React JS docs: https://react.dev/
 
 Redux JS docs: https://redux.js.org/
 
 NodeJS docs: https://nodejs.org/en/docs/
 
-Express JS docs: https://expressjs.com/en/5x/api.html
+Express JS docs: https://expressjs.com/en/4x/api.html
 
-mongoDB docs: https://docs.mongodb.com/
+mongoDB docs: https://www.mongodb.com/docs/
 
 mongoose JS docs: https://mongoosejs.com/docs/guide.html
 
-## Project Start Commands
+## Running Locally
 
-Client start in client folder: ```npm start``` 
+Requires Node 20+ and a MongoDB database (a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster works).
 
-Server start in server folder: ```node index.js```
+1. Copy `server/.env.example` to `server/.env` and fill in `mongodburi` and `SECRET`
+2. Install: `npm install --prefix server && npm install --prefix client`
+3. Start the API (port 3004): `npm run dev:server`
+4. In a second terminal, start React (port 3000): `npm run dev:client`
 
+The React dev server proxies API calls to port 3004. All API routes live under `/api`.
+
+## Deploying (Render free tier)
+
+The Express server serves the built React app, so the whole thing deploys as one web service.
+
+1. Create a free MongoDB Atlas cluster. Under Network Access, allow `0.0.0.0/0`. Copy the connection string.
+2. On [Render](https://render.com): **New > Blueprint**, then pick this repo. It reads `render.yaml`.
+3. When prompted, paste the Atlas connection string as `mongodburi`. `SECRET` is generated for you.
+4. Put the resulting URL at the top of this README.
+
+Free Render services sleep after about 15 minutes idle, so the first visit after that takes ~30-60 seconds to wake up.
+
+## 2026 Update
+
+Brought the original 2019 project back to life on current tooling:
+
+* Node 20+, react-scripts 5, React 17, React Router 5, Mongoose 8, Express 4.21
+* Replaced the deprecated `bcrypt-nodejs` with `bcryptjs` (existing password hashes still verify)
+* API moved under `/api` so refreshing `/orders` or `/checkout` loads the app instead of raw JSON
+* Orders are now tied to the logged-in user: users only see and delete their own orders
+* Saved logins restore before the first render, so a refresh keeps you on the page you were on
+* Missing ingredients document falls back to an empty burger, so a fresh database works with no seeding
+* Single-service deploy config for Render, replacing the retired Heroku free tier
 
 ## Application Screenshots
 

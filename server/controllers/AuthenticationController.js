@@ -1,29 +1,28 @@
 const User = require("../models/UserModel");
 const jwt = require("jwt-simple");
 
+// Every /orders request (list, show, create, delete) requires a valid token
 const authentication = (req, res, next) => {
-  //if(req.path.split("/")[1] !== "api")
-  if(req.path !== "/orders")
-  {
+  if (!req.path.startsWith("/orders")) {
     return next();
   }
-  // get the token from the header
-  //const tokenString = req.header("authorization");
   const tokenString = req.query.auth;
   if (!tokenString) {
-    return res.status(401).json({error: "Invalid Credentials"});
+    return res.status(401).json({ error: "Invalid Credentials" });
   }
-  const tokenObject = jwt.decode(tokenString,process.env.SECRET);
-  // decrypt the token
-  // find user by id
-  User.findById(tokenObject.userId, function (err, user) {
-    if (err) { return res.status(401).json({error: "Invalid Credentials"}); }
-    if (user) {
+  let tokenObject;
+  try {
+    tokenObject = jwt.decode(tokenString, process.env.SECRET);
+  } catch (e) {
+    return res.status(401).json({ error: "Invalid Credentials" });
+  }
+  User.findById(tokenObject.userId).exec()
+    .then((user) => {
+      if (!user) return res.status(401).json({ error: "Invalid Credentials" });
       req.user = user;
       return next();
-    } 
-    return res.status(401).json({error: "Invalid Credentials"});
-  });
-}
+    })
+    .catch(() => res.status(401).json({ error: "Invalid Credentials" }));
+};
 
 exports.authentication = authentication;

@@ -37,7 +37,7 @@ class Orders extends Component {
 
     //deletes the selected order
     deletOrderHandler () {
-        axios.delete('/orders/' + this.props.orderId)
+        axios.delete('/orders/' + this.props.orderId + '?auth=' + this.props.token)
                 .then(response => {
                     this.setState({
                         deleted: response.data                        

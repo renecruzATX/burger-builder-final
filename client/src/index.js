@@ -4,13 +4,18 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
+import axios from 'axios';
  
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {authCheckState} from './store/actions/index';
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
+
+//all API calls go to the Express server under /api
+axios.defaults.baseURL = '/api';
 
 //enables Redux dev tools in browsers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -26,6 +31,10 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
+
+//restore a saved login before the first render so refreshing /orders or /checkout
+//doesn't bounce a logged-in user back to the home page
+store.dispatch(authCheckState());
 
 //Provider enables redux for the app
 //BrowserRouter enables switching between pages without refreshing the app
